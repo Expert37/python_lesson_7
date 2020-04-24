@@ -26,8 +26,19 @@ with open('dict_to_json.txt', 'w') as f:    # с помощью менеджер
 # load, loads - для обратной конвертации
 with open('dict_to_json.txt') as f:
     data = json.load(f)     # в скобках указывается только файл
-print(data)
+print(type(data), data)
 
+# проверим теперь метод loads:
 
+data_1 = json.loads(dict_to_json)   # подадим на вход объект dict_to_json
+print(type(data_1), data_1)
+
+# Реальный пример работы с данными json. Ответ по API
+
+import requests
+
+response = requests.get("https://jsonplaceholder.typicode.com/todos")
+data_2 = json.loads(response.text)
+print(data_2)
 
 
